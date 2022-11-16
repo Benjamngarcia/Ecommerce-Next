@@ -1,0 +1,16 @@
+.basic-layout {
+    min-height: 100vh;
+    background-image: url("https://res.cloudinary.com/dusthnb2h/image/upload/v1668635454/static/blurry-gradient-haikei_igblry.svg");
+    background-size: cover;
+    background-position: center;
+
+    .content {
+        background-color: transparent;
+        height: calc(100vh - 130px);
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+}
