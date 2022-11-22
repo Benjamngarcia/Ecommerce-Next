@@ -18,3 +18,11 @@ export async function createAddressApi(address, logout) {
         return null;
     }
 }
+
+export async function getAddressesApi(idUser, logout) {
+    try {
+        const url = `${BASE_PATH}/api/adresses?user=${idUser}`
+    } catch (error) {
+        return null;
+    }
+}

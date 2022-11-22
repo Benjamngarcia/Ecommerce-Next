@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Form, Button } from "semantic-ui-react"
 import { useFormik } from "formik"
 import * as Yup from "Yup"
@@ -25,10 +25,11 @@ export default function AddressForm(props) {
             ...formData,
             user: auth.idUser
         }
+        console.log("🚀 ~ file: AddressForm.js ~ line 25 ~ createAddress ~ formDataTemp", formDataTemp)
         const response = await createAddressApi(formDataTemp, logout)
 
         if (!response){
-            toast.warning("Error al crear la dirección")
+            toast.error("Error al crear la dirección")
             setLoading(false)
         } else {
             formik.resetForm()

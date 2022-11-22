@@ -40,10 +40,11 @@
       "type": "string",
       "required": true
     },
-    "admin_user": {
+    "user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "admin::user"
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "address"
     }
   }
 }
