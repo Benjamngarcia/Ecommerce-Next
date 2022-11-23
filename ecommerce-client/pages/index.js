@@ -4,6 +4,7 @@ import { Loader } from "semantic-ui-react";
 import BasicLayout from "../layouts/BasicLayout"
 import { getLastGamesApi } from "../api/games"
 import ListGames from "../components/ListGames";
+import Seo from "../components/Seo"
 
 export default function Home(props) {
   const [games, setGames] = useState(null)
@@ -30,6 +31,7 @@ export default function Home(props) {
 
   return (
     <BasicLayout className="home">
+      <Seo />
       {!games && <Loader active>Cargando juegos</Loader>}
       {games && size(games) === 0 && (
         <div>

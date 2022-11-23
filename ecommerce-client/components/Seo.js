@@ -12,7 +12,7 @@ export default function Seo(props) {
 }
 
 Seo.defaultProps = {
-    title: "Gaming - Tus juegos favoritos",
+    title: "Game Shop - Tus videojuegos favoritos",
     description:
         "Tus juegos favoritos para Steam, PlayStation, Xbox, Switch al mejor precio.",
 };

@@ -19,7 +19,7 @@ export async function getGamesPlatformApi(platform, limit, start) {
         const limitItems = `pagination[limit]=${limit}`
         const sortItems = `sort=createdAt:desc`
         //get all games, not filtered by platform
-        const url = `${BASE_PATH}/api/games?platform.url=${platform}&${sortItems}&${startItems}&${limitItems}&populate=*`
+        const url = `${BASE_PATH}/api/games?platform.data.attributes.url=${platform}&${sortItems}&${startItems}&${limitItems}&populate=*`
         const response = await fetch(url)
         const result = await response.json()
         let foundResult = result.data.filter((item) => item.attributes.platform.data.attributes.url === platform)
