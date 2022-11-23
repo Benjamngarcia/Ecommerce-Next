@@ -8,11 +8,11 @@ export default function InfoGame(props) {
 
     return (
         <div className="info-game">
-            <ReactPlayer
+            {/* <ReactPlayer
                 className="info-game__video"
                 url={game.video}
                 controls={true}
-            />
+            /> */}
             {/* <CarouselScreenshots title={game.title} screenshots={game.screenshots.data} /> */}
             <div className="info-game__content">
                 <div dangerouslySetInnerHTML={{ __html: game.summary }} />

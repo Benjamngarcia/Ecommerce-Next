@@ -4,7 +4,7 @@ import BasicLayout from "../layouts/BasicLayout";
 import { getGameByUrlApi } from "../api/games";
 import HeaderGame from "../components/Game/HeaderGame";
 import TabsGame from "../components/Game/TabsGame";
-// import Seo from "../components/Seo";
+import Seo from "../components/Seo";
 
 export default function Game() {
     const [game, setGame] = useState(null);
@@ -22,7 +22,7 @@ export default function Game() {
 
     return (
         <BasicLayout className="game">
-            {/* <Seo title={game.title} /> */}
+            <Seo title={game.title} />
             <HeaderGame game={game} />
             <TabsGame game={game} />
         </BasicLayout>

@@ -46,13 +46,28 @@ export async function getGameByUrlApi(path) {
         const url = `${BASE_PATH}/api/games?url_eq=${path}&populate=*`;
         const response = await fetch(url);
         //get all results
-        const results = await response.json();
+        const results = await response.json();        
         //find game
-        let foundResult = results.data.find(function(result, index) {
-            if(result.attributes.url == path)
+        let foundResult = results.data.find(function (result, index) {
+            if (result.attributes.url == path)
                 return true;
         });
         return foundResult.attributes;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+export async function searchGamesApi(title) {
+    try {
+        const url = `${BASE_PATH}/api/games?_q=${title}&populate=*`;
+        const response = await fetch(url);
+        const result = await response.json();
+        let resultsFiltered = result.data.map((item) =>{
+            return item.attributes
+        })
+        return resultsFiltered;
     } catch (error) {
         console.log(error);
         return null;

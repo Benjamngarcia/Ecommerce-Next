@@ -9,6 +9,7 @@ import {
 
 export default function ListGames(props) {
     const { games } = props;
+    // console.log("🚀 ~ file: ListGames.js ~ line 12 ~ ListGames ~ games", games)
     const { width } = useWindowSize();
 
     const getColumnsRender = () => {
@@ -55,7 +56,7 @@ function Game(props) {
                         ) : (
                             <span />
                         )}
-                        <span className="price">{game.price}€</span>
+                        <span className="price">$ {game.price}</span>
                     </div>
                 </div>
                 <h2>{game.title}</h2>
