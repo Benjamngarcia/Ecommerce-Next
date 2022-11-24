@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { Container, Menu, Grid, Icon, Label } from "semantic-ui-react"
 import Link from "next/link"
 import BasicModal from "../../Modal/BasicModal/BasicModal"
+import useWindowSize from "../../../hooks/useWindowSize"
 import Auth from "../../Auth"
 import useAuth from "../../../hooks/useAuth"
 import useCart from "../../../hooks/useCart"
@@ -14,6 +15,16 @@ export default function MenuWeb() {
     const [titleModal, setTitleModal] = useState("Inicia sesión")
     const [user, setUser] = useState(undefined)
     const { auth, logout } = useAuth()
+    const { width } = useWindowSize();
+
+    const getClassResponsive = () => {
+
+        if (width < 768) {
+            return "responsive"
+        } else {
+            return ""
+        }
+    }
 
     useEffect(() => {
         (async () => {
@@ -32,7 +43,7 @@ export default function MenuWeb() {
 
     function getAttributesPlatform(platforms) {
         let platformArr = []
-        platforms.map((platform) =>{
+        platforms.map((platform) => {
             platformArr.push(platform.attributes)
             setPlatforms(platformArr || [])
         })
@@ -44,14 +55,14 @@ export default function MenuWeb() {
     const onCloseModal = () => setShowModal(false)
 
     return (
-        <div className="menu">
+        <div className={"menu " + getClassResponsive()}>
             <Container>
                 <Grid>
                     <Grid.Column className="menu__left" width={6}>
-                        <MenuPlatforms platforms={platforms} />
+                        <MenuPlatforms platforms={platforms} getClassResponsive={getClassResponsive} />
                     </Grid.Column>
                     <Grid.Column className="menu__right" width={10}>
-                        {user !== undefined && <MenuOptions onShowModal={onShowModal} user={user} logout={logout} />}
+                        {user !== undefined && <MenuOptions onShowModal={onShowModal} user={user} logout={logout} getClassResponsive={getClassResponsive}/>}
                     </Grid.Column>
                 </Grid>
             </Container>
@@ -63,13 +74,13 @@ export default function MenuWeb() {
 }
 
 function MenuPlatforms(props) {
-    const { platforms } = props
+    const { platforms, getClassResponsive } = props
     return (
         <Menu>
             {platforms.map((platform) => {
                 return (
                     <Link href={`/games/${platform.url}`} key={platform.title}>
-                        <Menu.Item>{platform.title}</Menu.Item>
+                        <Menu.Item className={getClassResponsive()}>{platform.title}</Menu.Item>
                     </Link>
                 )
             })}
@@ -78,7 +89,7 @@ function MenuPlatforms(props) {
 }
 
 function MenuOptions(util) {
-    const { onShowModal, user, logout } = util
+    const { onShowModal, user, logout, getClassResponsive } = util
     const { productsCart } = useCart()
     return (
         <Menu>
@@ -86,7 +97,7 @@ function MenuOptions(util) {
                 user ? (
                     <>
                         <Link href="/orders">
-                            <Menu.Item>
+                            <Menu.Item className={getClassResponsive()}>
                                 <Icon name="game" /> Mis pedidos
                             </Menu.Item>
                         </Link>
@@ -119,3 +130,4 @@ function MenuOptions(util) {
         </Menu>
     )
 }
+

@@ -54,3 +54,16 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 600px) {
+
+.list-games{
+    &__game{
+        img{
+            width: 70%;
+            margin: auto;
+        }
+    }
+}
+}

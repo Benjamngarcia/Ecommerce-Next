@@ -70,3 +70,28 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+
+    .top-bar{
+        &__left{
+            .logo{
+                font-size: 20px;
+            }
+        }
+
+        &__right{
+            .ui.input{
+                input{
+                    width: 120px;
+                    &:focus{
+                        width: 150px;
+                    }
+                }
+                i{
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}

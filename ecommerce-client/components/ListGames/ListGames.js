@@ -9,7 +9,6 @@ import {
 
 export default function ListGames(props) {
     const { games } = props;
-    // console.log("🚀 ~ file: ListGames.js ~ line 12 ~ ListGames ~ games", games)
     const { width } = useWindowSize();
 
     const getColumnsRender = () => {
